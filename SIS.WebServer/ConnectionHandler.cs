@@ -58,7 +58,7 @@ namespace SIS.WebServer
 
             if (!this.serverRoutingTable.Routes.ContainsKey(httpRequest.RequestMethod)||!this.serverRoutingTable.Routes[httpRequest.RequestMethod].ContainsKey(httpRequest.Path))
             {
-                return new HttpResponse(HttpResponseStatusCode.NotFound);
+                return new HttpResult(HttpResponseStatusCode.NotFound);
             }
             return this.serverRoutingTable.Routes[httpRequest.RequestMethod][httpRequest.Path].Invoke(httpRequest);
         }
@@ -67,7 +67,7 @@ namespace SIS.WebServer
         {
             var byteSegments = httpResponse.GetBytes();
             //Todo ! SendToAsync doesnt work!
-            await this.client.SendToAsync(byteSegments, SocketFlags.None);
+            //await this.client.SendToAsync(byteSegments, SocketFlags.None);
             
         }
 

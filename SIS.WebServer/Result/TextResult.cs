@@ -5,7 +5,7 @@ using SIS.HTTP.Responses;
 
 namespace SIS.WebServer.Result
 {
-    public class TextResult : HttpResponse
+    public class TextResult : HttpResult
     {
         public TextResult(string content, HttpStatusCode statusCode) : base(statusCode)
         {

@@ -9,21 +9,21 @@ using SIS.HTTP.Responses.Contract;
 
 namespace SIS.HTTP.Responses
 {
-    public class HttpResponse : IHttpResponse
+    public class HttpResult : IHttpResponse
     {
         private HttpStatusCode statusCode;
 
-        public HttpResponse(){ }
+        public HttpResult(){ }
 
 
-        public HttpResponse(HttpResponseStatusCode statusCode)
+        public HttpResult(HttpResponseStatusCode statusCode)
         {
             this.Headers = new HttpHeaderCollection();
             this.Content = new byte[0];
             this.StatusCode = statusCode;
         }
 
-        public HttpResponse(HttpStatusCode statusCode)
+        public HttpResult(HttpStatusCode statusCode)
         {
             this.statusCode = statusCode;
         }
