@@ -50,11 +50,12 @@ namespace SIS.HTTP.Requests
             this.ParseRequestPath();
 
             this.ParseHeaders(splitRequestContent.Skip(1).ToArray());
-           // if (splitRequestContent.Length > 1)
-            //{
+         
             var requestHasBody = splitRequestContent.Length > 1;
+            if (requestHasBody)
+            {
                 this.ParseRequestParameters(splitRequestContent[splitRequestContent.Length - 1], requestHasBody);
-            //}
+            }
         }
 
         private void ParseRequestParameters(string bodyParameters,  bool requestHasBody)

@@ -22,8 +22,7 @@ namespace SIS.WebServer
             this.client = client;
             this.serverRoutingTable = serverRoutingTable;
         }
-
-        //TODO Implement this method and complete project!!
+        
         private async Task<IHttpRequest> ReadRequest()
         {
             var result = new StringBuilder();
@@ -65,9 +64,9 @@ namespace SIS.WebServer
 
         private async Task PrepareResponse(IHttpResponse httpResponse)
         {
-            var byteSegments = httpResponse.GetBytes();
-            //Todo ! SendToAsync doesnt work!
-            //await this.client.SendToAsync(byteSegments, SocketFlags.None);
+            ArraySegment<byte> byteSegments = new ArraySegment<byte>(Encoding.UTF8.GetBytes(httpResponse.ToString()));
+         
+            await client.SendAsync(byteSegments, SocketFlags.None);
             
         }
 
